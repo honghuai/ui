@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>em说明</title>
+</head>
+<style type="text/css">
+    body{
+        font-size: 75%;/* 16px*75%=12px */
+    }
+    h1{
+        font-size: 2em;/* 12px*2=24px */
+    }
+    .font24{
+        font-size: 24px;
+    }
+    .font1875{
+        font-size: 18.75px;
+    }
+    li,span{
+        font-size: 1.25em;/* 1.25*12px=15px */
+    }
+    /* 16px*75%=12px 用于重置第二个li标签em基准值 */
+    .parent{
+        font-size: 75%;
+    }
+    /* 归零，但是层级关系套越多，该重置归零样式叠加越多 */
+    /* li li, li p, li span, li p span, p span{
+        font-size:1em
+    } */
+</style>
+<body>
+em的問題是：字級大小會隨著巢狀層級而疊加。
+<h1>这是2em字体大小</h1>
+<h1 class="font24">这是24px字体大小</h1>
+<ol>
+    <li>
+        第一层li字体1.25em大小（1.25*12px=15px）
+        <ul>
+            <li>
+                第二层li字体1.25em大小(1.25*15px=18.75px)
+            </li>
+            <li class="font1875">这是18.75px字体大小</li>
+        </ul>
+    </li>
+    <li>
+        第一层li字体1.25em大小（1.25*12px=15px）
+        <ul class="parent">
+            <li>
+                第二层重置过的li字体1.25em大小(1.25*12px=15px)
+            </li>
+            <li class="font1875">这是18.75px字体大小</li>
+        </ul>
+    </li>
+</ol>
+</body>
+</html>
